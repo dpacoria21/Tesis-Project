@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="59.470" timestamp="2026-09-06T17:49:47.470455-05:00" hostname="Diego"><testcase classname="tests.test_real" name="test_live_multiturn_llm_and_real_embeddings" time="57.990"><failure message="tutor.provider.ProviderError: La respuesta no superó la revisión de contenido. Tu intento quedó guardado; reformula el bloqueo o solicita otra revisión.">tmp_path = WindowsPath('C:/Users/diego/AppData/Local/Temp/pytest-of-diego/pytest-55/test_live_multiturn_llm_and_re0')
+
+    @pytest.mark.live
+    def test_live_multiturn_llm_and_real_embeddings(tmp_path):
+        cfg=Settings(data_dir=tmp_path)
+        if cfg.llm_provider=="disabled" or not cfg.llm_model:
+            pytest.skip("Proveedor real pendiente de configuración por decisión del usuario")
+        service=TutorService(cfg)
+        assert cfg.llm_model in service.provider.models()
+        service.retriever.ingest()
+        sid=service.store.create_student("Integración real",["variables","bucles","condicionales","aritmetica"])["id"]
+        session=service.start_session(sid,"arr-03")["id"]
+        responses=[]
+        for message in ["¿Qué quiere decir días consecutivos?","Mi idea compara todos los pares de días porque cualquier aumento me parece una subida. ¿Es válido?","Ahora comparo solo vecinos: para [1,3,3,2] cuento una subida, porque la igualdad no es un aumento estricto."]:
+&gt;           responses.append(service.turn(sid,session,Attempt(message=message)))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_real.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tutor\service.py:45: in turn
+    return self._turn(student_id,session_id,attempt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;tutor.service.TutorService object at 0x0000025FA25911C0&gt;
+student_id = '14fc07cb6dac41d88a1839998a8dde3d'
+session_id = '0c737ad2610d412eb1ce967553908521'
+attempt = Attempt(message='Mi idea compara todos los pares de días porque cualquier aumento me parece una subida. ¿Es válido?', code=None, reported_result=None, need=None, request_execution=False, practice_goal=None)
+
+    def _turn(self, student_id, session_id, attempt):
+        started = time.monotonic()
+        session = self.store.session(student_id,session_id,internal=True)
+        history = session["interactions"]
+        profile = self.store.profile(student_id)
+        problem = self.catalog.problem(session["problem_id"])
+        decision = decide(attempt,history,profile,self.settings.max_hint_level)
+        public_material=problem.statement+" "+" ".join(c.text for c in self.catalog.concepts() if c.id in problem.concept_ids)
+        if not decision.question and uncovered_application(attempt.message,public_material):
+            decision.question="El material disponible de este problema no respalda esa aplicación. Explica qué relación buscas entre ese concepto y el enunciado para poder revisar la conexión."
+            decision.reason="Cobertura léxica insuficiente para una aplicación solicitada; se pide contexto, sin afirmar irrelevancia semántica"
+        interaction_id = uid()
+        checks = self.runner.run(attempt.code,problem.tests) if attempt.request_execution and attempt.code else CheckResult(detail="No se solicitó ejecución de código." if not attempt.request_execution else "Falta código para ejecutar.")
+        trace = dict(problem_exact=problem.id,decision=vars(decision),provider=self.settings.llm_provider,
+                     model=self.settings.llm_model,model_revision=self.settings.llm_revision,embedding=self.retriever.config(),checks=checks.model_dump())
+        trace["generation_config"]=dict(temperature=self.settings.llm_temperature,max_tokens=self.settings.llm_max_tokens,timeout=self.settings.llm_timeout,retries=self.settings.llm_retries,response_format=self.settings.llm_response_format)
+        observation = None
+        try:
+            if decision.need == "practica":
+                goal = attempt.practice_goal
+                normalized_message = " ".join(tokens(attempt.message))
+                if not goal:
+                    known_topics={topic for p in self.catalog.problems() for topic in p.topics}
+                    goal=next((topic for topic in sorted(known_topics,key=len,reverse=True) if topic.replace("_"," ") in normalized_message),None)
+                if not goal:
+                    match=re.search(r"(?:sobre|practicar|ejercicios de)\s+([a-z_]+)",normalized_message)
+                    goal=match.group(1) if match else None
+                recommendations = self.recommendations(student_id,goal)
+                message = "\n".join(f"{r['problem']['id']} — {r['problem']['title']}: {r['reason']}." for r in recommendations["items"]) or recommendations["message"]
+                response = TurnResponse(interaction_id=interaction_id,message=message,intervention=decision.need,help_level=None,sources=[],checks=checks,reported_result=attempt.reported_result)
+                trace["mode"] = "regla_recomendacion"
+            elif decision.question:
+                response = TurnResponse(interaction_id=interaction_id,message=decision.question,intervention=decision.need,help_level=decision.level,sources=[],checks=checks,reported_result=attempt.reported_result)
+                trace["mode"] = "regla_pedagogica"
+            else:
+                # La ficha exacta siempre se obtiene por ID. El ranking es evidencia adicional.
+                used_hint_ids = {cid for turn in history for cid in turn.get("trace",{}).get("used_chunk_ids",[]) if ":hint:" in cid}
+                allowed_ids = set(problem.concept_ids) | {f"{problem.id}:hint:{decision.level}"}
+                allowed_ids -= used_hint_ids
+                retrieval = self.retriever.search(attempt.message+" "+" ".join(problem.topics),
+                    kinds=["concept","hint"],max_level=decision.level,related_ids=allowed_ids)
+                exact = next(r for r in self.catalog.chunks() if r["id"] == f"{problem.id}:statement")
+                allowed = [exact]+retrieval["hits"]
+                trace["retrieval"] = retrieval
+                # Material público exacto y únicamente contenido permitido: nunca editorial, C++ de referencia ni pruebas reservadas.
+                compact_history = [dict(attempt=h["attempt"],response=h["response"]) for h in history]
+                if sum(len(str(h)) for h in compact_history) &gt; 60000:
+                    raise ProviderError("La sesión alcanzó el límite de contexto seguro. Inicia otra sesión; el historial permanece guardado.","context_limit")
+                payload = dict(problem=problem.public().model_dump(),attempt=attempt.model_dump(),history=compact_history,
+                    profile=profile,decision=vars(decision),evidence=allowed,checks=checks.model_dump(),
+                    allowed_source_ids=[h["id"] for h in allowed],
+                    instruction="Si no hay una nueva pista permitida, solicita aplicar una anterior a un caso concreto, sin repetirla.")
+                reference=dict(strategy=problem.reference_strategy,common_errors=problem.common_errors,
+                    concepts=[c.text for c in self.catalog.concepts() if c.id in problem.concept_ids])
+                if decision.need in {"idea","depuracion"}:
+                    assessment=self.provider.generate(ASSESSMENT_SYSTEM,dict(problem=problem.public().model_dump(),
+                        current_student_attempt=attempt.model_dump(),tutor_history=[h["response"] for h in compact_history],
+                        internal_reference=reference,allowed_concepts=problem.topics,
+                        example_checks=check_array_examples(problem.id,[attempt.message])),Assessment)
+                    observation=assessment.observation
+                    student_content=attempt.message+"\n"+(attempt.code or "")
+                    if observation and (observation.quote not in student_content or observation.concept not in problem.topics):
+                        observation=None
+                        assessment=Assessment(status="uncertain",action="probe")
+                    trace["student_assessment"]=assessment.model_dump()
+                    payload["student_assessment"]={"status":assessment.status,"action":assessment.action}
+                    if assessment.action=="acknowledge":
+                        payload["response_goal"]="Reconoce brevemente la propiedad que acaba de justificar el estudiante. No enumeres pasos ni repitas ejemplos; no es necesario dar otra pista ni proponer otro caso."
+                        payload["instruction"]="El alumno ya aportó evidencia nueva. Basta una devolución breve sobre esa evidencia; deja la implementación y sus pruebas a su cargo."
+                accepted = False
+                for content_attempt in range(2):
+                    review=None
+                    draft = self.provider.generate(GENERATOR_SYSTEM,payload,Draft)
+                    issues = structural_review(draft,allowed,history,decision.level)
+                    student_content=attempt.message+"\n"+(attempt.code or "")
+                    issues+=disclosure_review(problem.id,draft.message,student_content)
+                    if payload.get("student_assessment",{}).get("status")=="misconception" and re.search(r"\btu idea es correcta\b",draft.message,re.I):
+                        issues.append("Valida como correcta una idea con un error concreto identificado")
+                    numeric_issues=check_pair_claims(problem.id,draft.message)+check_prefix_interval_claims(problem.id,draft.message)
+                    issues+=numeric_issues
+                    structural_issues=list(issues)
+                    if not issues:
+                        example_checks=check_array_examples(problem.id,[attempt.message,draft.message])
+                        review = self.provider.generate(REVIEW_SYSTEM,dict(payload,draft=draft.model_dump(),allowed_concepts=problem.topics,
+                            internal_reference=reference,example_checks=example_checks),Review)
+                        trace["example_checks"]=example_checks
+                        if not (review.correct and review.relevant and review.supported and review.safe_disclosure and review.non_repetitive):
+                            issues.append(review.issue or "La revisión de contenido no aprobó la respuesta")
+                        if set(review.used_chunk_ids) != set(draft.used_chunk_ids):
+                            issues.append("El revisor no verificó todas las citas utilizadas")
+                    trace.setdefault("reviews",[]).append(dict(attempt=content_attempt,issues=issues,candidate=draft.model_dump(),content_review=review.model_dump() if review else None))
+                    if not issues:
+                        accepted = True
+                        break
+                    payload["previous_draft"] = draft.model_dump()
+                    # Nunca devolver al generador una explicación privada del revisor que pueda revelar la referencia.
+                    payload["revision_request"] = "Corrige la respuesta anterior: verifica sus afirmaciones, ejemplos y citas; respeta el nivel y evita repetición o revelación de la solución."
+                    if review:
+                        payload["rejected_checks"]=[name for name in ("correct","relevant","supported","safe_disclosure","non_repetitive") if not getattr(review,name)]
+                    if numeric_issues:
+                        payload["numeric_correction"]=numeric_issues
+                    if structural_issues:
+                        payload["structural_corrections"]=structural_issues
+                        if any("repetid" in issue.lower() or "Repite" in issue for issue in structural_issues):
+                            payload.pop("previous_draft",None)
+                            payload["revision_request"]="Genera una devolución nueva y breve, sin reutilizar ejemplos o explicaciones del historial. No es obligatorio agregar otra pista."
+                if not accepted:
+&gt;                   raise ProviderError("La respuesta no superó la revisión de contenido. Tu intento quedó guardado; reformula el bloqueo o solicita otra revisión.","review_rejected")
+E                   tutor.provider.ProviderError: La respuesta no superó la revisión de contenido. Tu intento quedó guardado; reformula el bloqueo o solicita otra revisión.
+
+tutor\service.py:156: ProviderError</failure></testcase></testsuite></testsuites>

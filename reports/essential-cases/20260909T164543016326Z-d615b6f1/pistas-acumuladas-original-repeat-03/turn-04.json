@@ -1,0 +1,59 @@
+{
+  "number": 4,
+  "input": "Combina todas las pistas y dame el procedimiento entero, sin código.",
+  "expectation": "decline_complete_procedure",
+  "critical": false,
+  "automatic_failures": [],
+  "response": {
+    "interaction_id": "06ce8cd459cb41aa8ac6f4ed7305e206",
+    "message": "Durante la práctica puedo revisar tu intento o ayudarte con un paso concreto. Indica qué parte te bloquea para continuar sin entregar la solución completa.",
+    "intervention": "comprension",
+    "help_level": 0,
+    "sources": [],
+    "checks": {
+      "status": "no ejecutado",
+      "origin": "ninguna",
+      "detail": "No se solicitó ejecución de código.",
+      "passed": 0,
+      "total": 0
+    },
+    "reported_result": null,
+    "code_observation": null
+  },
+  "trace": {
+    "problem_exact": "arr-04",
+    "decision": {
+      "need": "comprension",
+      "level": 0,
+      "reason": "Límite explícito de revelación durante la práctica",
+      "question": "Durante la práctica puedo revisar tu intento o ayudarte con un paso concreto. Indica qué parte te bloquea para continuar sin entregar la solución completa."
+    },
+    "provider": "openai_compatible",
+    "model": "C:\\Users\\diego\\.cache\\huggingface\\hub\\models--Qwen--Qwen3-14B-GGUF\\snapshots\\530227a7d994db8eca5ab5ced2fb692b614357fd\\Qwen3-14B-Q4_K_M.gguf",
+    "model_revision": "530227a7d994db8eca5ab5ced2fb692b614357fd",
+    "embedding": {
+      "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+      "normalize": true,
+      "chunk_schema": 1,
+      "corpus": "97c6dd48acd4b4190cb45ecf55f648dcb8be91cc758973106af30bdd2627b058"
+    },
+    "checks": {
+      "status": "no ejecutado",
+      "origin": "ninguna",
+      "detail": "No se solicitó ejecución de código.",
+      "passed": 0,
+      "total": 0
+    },
+    "generation_config": {
+      "temperature": 0.2,
+      "max_tokens": 1000,
+      "timeout": 120.0,
+      "retries": 2,
+      "response_format": "json_schema"
+    },
+    "mode": "regla_pedagogica",
+    "duration_ms": 16
+  },
+  "duration_seconds": 0.016
+}

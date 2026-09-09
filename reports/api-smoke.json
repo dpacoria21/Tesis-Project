@@ -1,0 +1,12 @@
+{
+  "http_server": "uvicorn real en localhost",
+  "catalog_count": 12,
+  "persisted_interactions": 3,
+  "public_projection": "verified",
+  "missing_code_question": "verified",
+  "recommendation": "verified",
+  "llm_failure": "503 not_configured; intento conservado",
+  "console_resume": "verified in another process",
+  "embeddings": "Sentence Transformers reales",
+  "llm_real": "desactivado intencionalmente en esta prueba de manejo de fallos; no se simuló"
+}

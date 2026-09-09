@@ -1,0 +1,690 @@
+{
+  "case": "comprension-y-empates-variante",
+  "family": "comprension-y-empates",
+  "variant": "parafrasis-y-negativos",
+  "repetition": 3,
+  "student_id": "180c9bc4eddd41d29501ceb1e21075b7",
+  "session_id": "e34d104da49d4a61aaca1e4c30171010",
+  "turns": [
+    {
+      "number": 1,
+      "input": "¿La primera altura ocupa la posición cero o la uno?",
+      "expectation": "clarify_one_based",
+      "critical": false,
+      "automatic_failures": [],
+      "response": {
+        "interaction_id": "fa9274879df646bd85e25d9492e47248",
+        "message": "Las posiciones empiezan en 1, según el enunciado. Por ejemplo, en el caso de entrada 5\n-3 7 7 2 1, la primera altura máxima (7) ocurre en la posición 2.",
+        "intervention": "comprension",
+        "help_level": 0,
+        "sources": [
+          {
+            "chunk_id": "arr-02:statement",
+            "title": "Primer pico máximo",
+            "provenance": {
+              "kind": "original_demo",
+              "platform": "Material propio de demostración",
+              "external_id": null,
+              "url": null,
+              "review_status": "Comprobación automática; revisión docente pendiente",
+              "license_note": "Material original del prototipo. Uso educativo permitido."
+            }
+          },
+          {
+            "chunk_id": "arr-02:hint:0",
+            "title": "Primer pico máximo",
+            "provenance": {
+              "kind": "original_demo",
+              "platform": "Material propio de demostración",
+              "external_id": null,
+              "url": null,
+              "review_status": "Comprobación automática; revisión docente pendiente",
+              "license_note": "Material original del prototipo. Uso educativo permitido."
+            }
+          }
+        ],
+        "checks": {
+          "status": "no ejecutado",
+          "origin": "ninguna",
+          "detail": "No se solicitó ejecución de código.",
+          "passed": 0,
+          "total": 0
+        },
+        "reported_result": null,
+        "code_observation": null
+      },
+      "trace": {
+        "problem_exact": "arr-02",
+        "decision": {
+          "need": "comprension",
+          "level": 0,
+          "reason": "Necesidad, intento y ayuda previa; incremento solo con bloqueo explícito e intento concreto",
+          "question": null
+        },
+        "provider": "openai_compatible",
+        "model": "C:\\Users\\diego\\.cache\\huggingface\\hub\\models--Qwen--Qwen3-14B-GGUF\\snapshots\\530227a7d994db8eca5ab5ced2fb692b614357fd\\Qwen3-14B-Q4_K_M.gguf",
+        "model_revision": "530227a7d994db8eca5ab5ced2fb692b614357fd",
+        "embedding": {
+          "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "normalize": true,
+          "chunk_schema": 1,
+          "corpus": "97c6dd48acd4b4190cb45ecf55f648dcb8be91cc758973106af30bdd2627b058"
+        },
+        "checks": {
+          "status": "no ejecutado",
+          "origin": "ninguna",
+          "detail": "No se solicitó ejecución de código.",
+          "passed": 0,
+          "total": 0
+        },
+        "generation_config": {
+          "temperature": 0.2,
+          "max_tokens": 1000,
+          "timeout": 120.0,
+          "retries": 2,
+          "response_format": "json_schema"
+        },
+        "retrieval": {
+          "hits": [
+            {
+              "problem_id": "arr-02",
+              "title": "Primer pico máximo",
+              "topics": [
+                "arreglos",
+                "arreglos"
+              ],
+              "language": "es",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              },
+              "id": "arr-02:hint:0",
+              "kind": "hint",
+              "min_level": 0,
+              "text": "La respuesta es una posición desde 1, no el valor máximo. Si el máximo se repite, se pide su primera aparición.",
+              "step": "arr-02-focus-0",
+              "rrf_score": 0.01639344262295082
+            }
+          ],
+          "lexical": [],
+          "vector": [
+            [
+              "arr-02:hint:0",
+              0.19703567028045654
+            ]
+          ],
+          "strategy": "BM25+Chroma/cosine/RRF"
+        },
+        "response_contract": {
+          "mode": "standard",
+          "focus_source_id": "arr-02:hint:0"
+        },
+        "example_checks": [],
+        "reviews": [
+          {
+            "attempt": 0,
+            "issues": [],
+            "candidate": {
+              "message": "Las posiciones empiezan en 1, según el enunciado. Por ejemplo, en el caso de entrada 5\n-3 7 7 2 1, la primera altura máxima (7) ocurre en la posición 2.",
+              "used_chunk_ids": [
+                "arr-02:statement",
+                "arr-02:hint:0"
+              ],
+              "code_observation": null
+            },
+            "content_review": {
+              "correct": true,
+              "relevant": true,
+              "supported": true,
+              "safe_disclosure": true,
+              "non_repetitive": true,
+              "used_chunk_ids": [
+                "arr-02:statement",
+                "arr-02:hint:0"
+              ],
+              "issue": ""
+            }
+          }
+        ],
+        "used_chunk_ids": [
+          "arr-02:statement",
+          "arr-02:hint:0"
+        ],
+        "progress": null,
+        "duration_ms": 3875
+      },
+      "duration_seconds": 3.875
+    },
+    {
+      "number": 2,
+      "input": "Mi idea cambia la posición guardada cuando encuentro una altura igual o más grande. En [-2,-2,-5] acabaría eligiendo la segunda posición.",
+      "expectation": "reject_equal_update",
+      "critical": true,
+      "automatic_failures": [],
+      "response": {
+        "interaction_id": "1359c5997c534356b89164d58e0eb8d3",
+        "message": "En el ejemplo [-2,-2,-5], tu regla elegiría la segunda posición, pero el enunciado pide la primera aparición del máximo. ¿Qué haría tu regla en [5,5,1]?",
+        "intervention": "idea",
+        "help_level": 1,
+        "sources": [
+          {
+            "chunk_id": "arr-02:statement",
+            "title": "Primer pico máximo",
+            "provenance": {
+              "kind": "original_demo",
+              "platform": "Material propio de demostración",
+              "external_id": null,
+              "url": null,
+              "review_status": "Comprobación automática; revisión docente pendiente",
+              "license_note": "Material original del prototipo. Uso educativo permitido."
+            }
+          },
+          {
+            "chunk_id": "arr-02:hint:1",
+            "title": "Primer pico máximo",
+            "provenance": {
+              "kind": "original_demo",
+              "platform": "Material propio de demostración",
+              "external_id": null,
+              "url": null,
+              "review_status": "Comprobación automática; revisión docente pendiente",
+              "license_note": "Material original del prototipo. Uso educativo permitido."
+            }
+          }
+        ],
+        "checks": {
+          "status": "no ejecutado",
+          "origin": "ninguna",
+          "detail": "No se solicitó ejecución de código.",
+          "passed": 0,
+          "total": 0
+        },
+        "reported_result": null,
+        "code_observation": null
+      },
+      "trace": {
+        "problem_exact": "arr-02",
+        "decision": {
+          "need": "idea",
+          "level": 1,
+          "reason": "Necesidad, intento y ayuda previa; incremento solo con bloqueo explícito e intento concreto",
+          "question": null
+        },
+        "provider": "openai_compatible",
+        "model": "C:\\Users\\diego\\.cache\\huggingface\\hub\\models--Qwen--Qwen3-14B-GGUF\\snapshots\\530227a7d994db8eca5ab5ced2fb692b614357fd\\Qwen3-14B-Q4_K_M.gguf",
+        "model_revision": "530227a7d994db8eca5ab5ced2fb692b614357fd",
+        "embedding": {
+          "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "normalize": true,
+          "chunk_schema": 1,
+          "corpus": "97c6dd48acd4b4190cb45ecf55f648dcb8be91cc758973106af30bdd2627b058"
+        },
+        "checks": {
+          "status": "no ejecutado",
+          "origin": "ninguna",
+          "detail": "No se solicitó ejecución de código.",
+          "passed": 0,
+          "total": 0
+        },
+        "generation_config": {
+          "temperature": 0.2,
+          "max_tokens": 1000,
+          "timeout": 120.0,
+          "retries": 2,
+          "response_format": "json_schema"
+        },
+        "retrieval": {
+          "hits": [
+            {
+              "problem_id": "arr-02",
+              "title": "Primer pico máximo",
+              "topics": [
+                "arreglos",
+                "arreglos"
+              ],
+              "language": "es",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              },
+              "id": "arr-02:hint:1",
+              "kind": "hint",
+              "min_level": 1,
+              "text": "En [5,5,1], ¿qué posición pide exactamente la palabra primera?",
+              "step": "arr-02-focus-1",
+              "rrf_score": 0.01639344262295082
+            }
+          ],
+          "lexical": [],
+          "vector": [
+            [
+              "arr-02:hint:1",
+              0.5167362689971924
+            ]
+          ],
+          "strategy": "BM25+Chroma/cosine/RRF"
+        },
+        "student_assessment": {
+          "observation": {
+            "concept": "arreglos",
+            "kind": "dificultad",
+            "quote": "Mi idea cambia la posición guardada cuando encuentro una altura igual o más grande. En [-2,-2,-5] acabaría eligiendo la segunda posición.",
+            "note": "El estudiante cree que al encontrar una altura igual o más grande, debe actualizar la posición, lo cual es incorrecto. En el ejemplo dado, la primera aparición del máximo es en la posición 1 (índice 0 en C++), pero el estudiante menciona la posición 2, lo que indica un error en la lógica de comparar"
+          },
+          "status": "misconception",
+          "action": "correct"
+        },
+        "response_contract": {
+          "mode": "contrast_attempt",
+          "focus_source_id": "arr-02:hint:1"
+        },
+        "example_checks": [
+          {
+            "values": [
+              -2,
+              -2,
+              -5
+            ],
+            "origin": "Cálculo determinista del ejemplo textual; no ejecución de código",
+            "first_max_position": 1,
+            "update_on_equal_position": 2
+          },
+          {
+            "values": [
+              5,
+              5,
+              1
+            ],
+            "origin": "Cálculo determinista del ejemplo textual; no ejecución de código",
+            "first_max_position": 1,
+            "update_on_equal_position": 2
+          }
+        ],
+        "reviews": [
+          {
+            "attempt": 0,
+            "issues": [],
+            "candidate": {
+              "message": "En el ejemplo [-2,-2,-5], tu regla elegiría la segunda posición, pero el enunciado pide la primera aparición del máximo. ¿Qué haría tu regla en [5,5,1]?",
+              "used_chunk_ids": [
+                "arr-02:statement",
+                "arr-02:hint:1"
+              ],
+              "code_observation": null
+            },
+            "content_review": {
+              "correct": true,
+              "relevant": true,
+              "supported": true,
+              "safe_disclosure": true,
+              "non_repetitive": true,
+              "used_chunk_ids": [
+                "arr-02:statement",
+                "arr-02:hint:1"
+              ],
+              "issue": ""
+            }
+          }
+        ],
+        "used_chunk_ids": [
+          "arr-02:statement",
+          "arr-02:hint:1"
+        ],
+        "progress": {
+          "concept": "arreglos",
+          "kind": "dificultad",
+          "quote": "Mi idea cambia la posición guardada cuando encuentro una altura igual o más grande. En [-2,-2,-5] acabaría eligiendo la segunda posición.",
+          "note": "El estudiante cree que al encontrar una altura igual o más grande, debe actualizar la posición, lo cual es incorrecto. En el ejemplo dado, la primera aparición del máximo es en la posición 1 (índice 0 en C++), pero el estudiante menciona la posición 2, lo que indica un error en la lógica de comparar"
+        },
+        "duration_ms": 7390
+      },
+      "duration_seconds": 7.406
+    },
+    {
+      "number": 3,
+      "input": "Ahora mantengo la posición 1 en [-2,-2,-5] porque una altura empatada no supera la anterior y el problema pide la primera aparición del máximo.",
+      "expectation": "acknowledge_strict_update",
+      "critical": false,
+      "automatic_failures": [],
+      "response": {
+        "interaction_id": "76985740623944719b3dc20844633d7c",
+        "message": "Reconoces correctamente que, al encontrar una altura igual a la máxima actual, no se actualiza la posición, ya que el problema requiere la primera aparición del máximo.",
+        "intervention": "idea",
+        "help_level": 1,
+        "sources": [
+          {
+            "chunk_id": "arr-02:statement",
+            "title": "Primer pico máximo",
+            "provenance": {
+              "kind": "original_demo",
+              "platform": "Material propio de demostración",
+              "external_id": null,
+              "url": null,
+              "review_status": "Comprobación automática; revisión docente pendiente",
+              "license_note": "Material original del prototipo. Uso educativo permitido."
+            }
+          }
+        ],
+        "checks": {
+          "status": "no ejecutado",
+          "origin": "ninguna",
+          "detail": "No se solicitó ejecución de código.",
+          "passed": 0,
+          "total": 0
+        },
+        "reported_result": null,
+        "code_observation": null
+      },
+      "trace": {
+        "problem_exact": "arr-02",
+        "decision": {
+          "need": "idea",
+          "level": 1,
+          "reason": "Necesidad, intento y ayuda previa; incremento solo con bloqueo explícito e intento concreto",
+          "question": null
+        },
+        "provider": "openai_compatible",
+        "model": "C:\\Users\\diego\\.cache\\huggingface\\hub\\models--Qwen--Qwen3-14B-GGUF\\snapshots\\530227a7d994db8eca5ab5ced2fb692b614357fd\\Qwen3-14B-Q4_K_M.gguf",
+        "model_revision": "530227a7d994db8eca5ab5ced2fb692b614357fd",
+        "embedding": {
+          "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "normalize": true,
+          "chunk_schema": 1,
+          "corpus": "97c6dd48acd4b4190cb45ecf55f648dcb8be91cc758973106af30bdd2627b058"
+        },
+        "checks": {
+          "status": "no ejecutado",
+          "origin": "ninguna",
+          "detail": "No se solicitó ejecución de código.",
+          "passed": 0,
+          "total": 0
+        },
+        "generation_config": {
+          "temperature": 0.2,
+          "max_tokens": 1000,
+          "timeout": 120.0,
+          "retries": 2,
+          "response_format": "json_schema"
+        },
+        "retrieval": {
+          "hits": [],
+          "lexical": [],
+          "vector": [],
+          "strategy": "BM25+Chroma/cosine/RRF"
+        },
+        "student_assessment": {
+          "observation": {
+            "concept": "arreglos",
+            "kind": "demostracion",
+            "quote": "Ahora mantengo la posición 1 en [-2,-2,-5] porque una altura empatada no supera la anterior y el problema pide la primera aparición del máximo.",
+            "note": "El estudiante explica correctamente que en caso de empate, se debe seleccionar la primera aparición del máximo, lo cual es coherente con el enunciado del problema."
+          },
+          "status": "supported",
+          "action": "acknowledge"
+        },
+        "response_contract": {
+          "mode": "acknowledge",
+          "focus_source_id": null
+        },
+        "example_checks": [
+          {
+            "values": [
+              -2,
+              -2,
+              -5
+            ],
+            "origin": "Cálculo determinista del ejemplo textual; no ejecución de código",
+            "first_max_position": 1,
+            "update_on_equal_position": 2
+          }
+        ],
+        "reviews": [
+          {
+            "attempt": 0,
+            "issues": [],
+            "candidate": {
+              "message": "Reconoces correctamente que, al encontrar una altura igual a la máxima actual, no se actualiza la posición, ya que el problema requiere la primera aparición del máximo.",
+              "used_chunk_ids": [
+                "arr-02:statement"
+              ],
+              "code_observation": null
+            },
+            "content_review": {
+              "correct": true,
+              "relevant": true,
+              "supported": true,
+              "safe_disclosure": true,
+              "non_repetitive": true,
+              "used_chunk_ids": [
+                "arr-02:statement"
+              ],
+              "issue": ""
+            }
+          }
+        ],
+        "used_chunk_ids": [
+          "arr-02:statement"
+        ],
+        "progress": {
+          "concept": "arreglos",
+          "kind": "demostracion",
+          "quote": "Ahora mantengo la posición 1 en [-2,-2,-5] porque una altura empatada no supera la anterior y el problema pide la primera aparición del máximo.",
+          "note": "El estudiante explica correctamente que en caso de empate, se debe seleccionar la primera aparición del máximo, lo cual es coherente con el enunciado del problema."
+        },
+        "duration_ms": 6500
+      },
+      "duration_seconds": 6.516
+    }
+  ],
+  "profile": {
+    "student_id": "180c9bc4eddd41d29501ceb1e21075b7",
+    "declared_basics": [
+      "variables",
+      "bucles",
+      "condicionales",
+      "aritmetica",
+      "arreglos"
+    ],
+    "observations": [
+      {
+        "id": "8d2028bf34034be3abb4add86075bba7",
+        "student_id": "180c9bc4eddd41d29501ceb1e21075b7",
+        "interaction_id": "1359c5997c534356b89164d58e0eb8d3",
+        "concept": "arreglos",
+        "kind": "dificultad",
+        "quote": "Mi idea cambia la posición guardada cuando encuentro una altura igual o más grande. En [-2,-2,-5] acabaría eligiendo la segunda posición.",
+        "note": "El estudiante cree que al encontrar una altura igual o más grande, debe actualizar la posición, lo cual es incorrecto. En el ejemplo dado, la primera aparición del máximo es en la posición 1 (índice 0 en C++), pero el estudiante menciona la posición 2, lo que indica un error en la lógica de comparar",
+        "created": "2026-09-09T16:43:49.336115+00:00",
+        "status": "provisional",
+        "help_level": 1
+      },
+      {
+        "id": "effb0bad5c1141408d7b1da5ee6eddf8",
+        "student_id": "180c9bc4eddd41d29501ceb1e21075b7",
+        "interaction_id": "76985740623944719b3dc20844633d7c",
+        "concept": "arreglos",
+        "kind": "demostracion",
+        "quote": "Ahora mantengo la posición 1 en [-2,-2,-5] porque una altura empatada no supera la anterior y el problema pide la primera aparición del máximo.",
+        "note": "El estudiante explica correctamente que en caso de empate, se debe seleccionar la primera aparición del máximo, lo cual es coherente con el enunciado del problema.",
+        "created": "2026-09-09T16:43:55.848884+00:00",
+        "status": "provisional",
+        "help_level": 1
+      }
+    ]
+  },
+  "session": {
+    "id": "e34d104da49d4a61aaca1e4c30171010",
+    "student_id": "180c9bc4eddd41d29501ceb1e21075b7",
+    "problem_id": "arr-02",
+    "created": "2026-09-09T16:43:38.064987+00:00",
+    "interactions": [
+      {
+        "id": "fa9274879df646bd85e25d9492e47248",
+        "created": "2026-09-09T16:43:41.936127+00:00",
+        "attempt": {
+          "message": "¿La primera altura ocupa la posición cero o la uno?",
+          "code": null,
+          "reported_result": null,
+          "need": null,
+          "request_execution": false,
+          "practice_goal": null
+        },
+        "response": {
+          "interaction_id": "fa9274879df646bd85e25d9492e47248",
+          "message": "Las posiciones empiezan en 1, según el enunciado. Por ejemplo, en el caso de entrada 5\n-3 7 7 2 1, la primera altura máxima (7) ocurre en la posición 2.",
+          "intervention": "comprension",
+          "help_level": 0,
+          "sources": [
+            {
+              "chunk_id": "arr-02:statement",
+              "title": "Primer pico máximo",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              }
+            },
+            {
+              "chunk_id": "arr-02:hint:0",
+              "title": "Primer pico máximo",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              }
+            }
+          ],
+          "checks": {
+            "status": "no ejecutado",
+            "origin": "ninguna",
+            "detail": "No se solicitó ejecución de código.",
+            "passed": 0,
+            "total": 0
+          },
+          "reported_result": null,
+          "code_observation": null
+        },
+        "status": "completed"
+      },
+      {
+        "id": "1359c5997c534356b89164d58e0eb8d3",
+        "created": "2026-09-09T16:43:49.336115+00:00",
+        "attempt": {
+          "message": "Mi idea cambia la posición guardada cuando encuentro una altura igual o más grande. En [-2,-2,-5] acabaría eligiendo la segunda posición.",
+          "code": null,
+          "reported_result": null,
+          "need": null,
+          "request_execution": false,
+          "practice_goal": null
+        },
+        "response": {
+          "interaction_id": "1359c5997c534356b89164d58e0eb8d3",
+          "message": "En el ejemplo [-2,-2,-5], tu regla elegiría la segunda posición, pero el enunciado pide la primera aparición del máximo. ¿Qué haría tu regla en [5,5,1]?",
+          "intervention": "idea",
+          "help_level": 1,
+          "sources": [
+            {
+              "chunk_id": "arr-02:statement",
+              "title": "Primer pico máximo",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              }
+            },
+            {
+              "chunk_id": "arr-02:hint:1",
+              "title": "Primer pico máximo",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              }
+            }
+          ],
+          "checks": {
+            "status": "no ejecutado",
+            "origin": "ninguna",
+            "detail": "No se solicitó ejecución de código.",
+            "passed": 0,
+            "total": 0
+          },
+          "reported_result": null,
+          "code_observation": null
+        },
+        "status": "completed"
+      },
+      {
+        "id": "76985740623944719b3dc20844633d7c",
+        "created": "2026-09-09T16:43:55.848884+00:00",
+        "attempt": {
+          "message": "Ahora mantengo la posición 1 en [-2,-2,-5] porque una altura empatada no supera la anterior y el problema pide la primera aparición del máximo.",
+          "code": null,
+          "reported_result": null,
+          "need": null,
+          "request_execution": false,
+          "practice_goal": null
+        },
+        "response": {
+          "interaction_id": "76985740623944719b3dc20844633d7c",
+          "message": "Reconoces correctamente que, al encontrar una altura igual a la máxima actual, no se actualiza la posición, ya que el problema requiere la primera aparición del máximo.",
+          "intervention": "idea",
+          "help_level": 1,
+          "sources": [
+            {
+              "chunk_id": "arr-02:statement",
+              "title": "Primer pico máximo",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              }
+            }
+          ],
+          "checks": {
+            "status": "no ejecutado",
+            "origin": "ninguna",
+            "detail": "No se solicitó ejecución de código.",
+            "passed": 0,
+            "total": 0
+          },
+          "reported_result": null,
+          "code_observation": null
+        },
+        "status": "completed"
+      }
+    ]
+  },
+  "automatic_pass": true,
+  "pedagogical_review": {
+    "status": "pending",
+    "reviewer": null,
+    "findings": null
+  }
+}

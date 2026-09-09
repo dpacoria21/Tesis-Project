@@ -1,0 +1,59 @@
+{
+  "number": 2,
+  "input": "Otra pista",
+  "expectation": "request_attempt",
+  "critical": false,
+  "automatic_failures": [],
+  "response": {
+    "interaction_id": "e9ace9393ce44a87b3a32f892d9cddd0",
+    "message": "Indica qué parte de la pista anterior probaste y qué resultado obtuviste; con ese intento podré orientar el siguiente paso.",
+    "intervention": "concepto",
+    "help_level": 2,
+    "sources": [],
+    "checks": {
+      "status": "no ejecutado",
+      "origin": "ninguna",
+      "detail": "No se solicitó ejecución de código.",
+      "passed": 0,
+      "total": 0
+    },
+    "reported_result": null,
+    "code_observation": null
+  },
+  "trace": {
+    "problem_exact": "arr-04",
+    "decision": {
+      "need": "concepto",
+      "level": 2,
+      "reason": "Falta un intento nuevo para adaptar la pista",
+      "question": "Indica qué parte de la pista anterior probaste y qué resultado obtuviste; con ese intento podré orientar el siguiente paso."
+    },
+    "provider": "openai_compatible",
+    "model": "C:\\Users\\diego\\.cache\\huggingface\\hub\\models--Qwen--Qwen3-14B-GGUF\\snapshots\\530227a7d994db8eca5ab5ced2fb692b614357fd\\Qwen3-14B-Q4_K_M.gguf",
+    "model_revision": "530227a7d994db8eca5ab5ced2fb692b614357fd",
+    "embedding": {
+      "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+      "normalize": true,
+      "chunk_schema": 1,
+      "corpus": "97c6dd48acd4b4190cb45ecf55f648dcb8be91cc758973106af30bdd2627b058"
+    },
+    "checks": {
+      "status": "no ejecutado",
+      "origin": "ninguna",
+      "detail": "No se solicitó ejecución de código.",
+      "passed": 0,
+      "total": 0
+    },
+    "generation_config": {
+      "temperature": 0.2,
+      "max_tokens": 1000,
+      "timeout": 120.0,
+      "retries": 2,
+      "response_format": "json_schema"
+    },
+    "mode": "regla_pedagogica",
+    "duration_ms": 15
+  },
+  "duration_seconds": 0.015
+}

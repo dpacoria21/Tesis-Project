@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="12.447" timestamp="2026-09-06T17:20:18.197323-05:00" hostname="Diego"><testcase classname="tests.test_real" name="test_real_embeddings_reingestion_semantics_and_persistence" time="10.996" /></testsuite></testsuites>

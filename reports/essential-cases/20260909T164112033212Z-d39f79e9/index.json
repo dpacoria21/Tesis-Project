@@ -1,0 +1,12 @@
+{
+  "config": {
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+    "normalize": true,
+    "chunk_schema": 1,
+    "corpus": "97c6dd48acd4b4190cb45ecf55f648dcb8be91cc758973106af30bdd2627b058"
+  },
+  "collection": "corpus-4ab67d9318f10a8c",
+  "count": 80,
+  "dimension": 384
+}

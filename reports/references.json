@@ -1,0 +1,56 @@
+{
+  "scope": "Solo referencias C++17 originales, nunca código del estudiante",
+  "compiler": "C:\\msys64\\mingw64\\bin\\g++.EXE",
+  "seed": 20260906,
+  "results": [
+    {
+      "problem": "sim-01",
+      "passed": 44
+    },
+    {
+      "problem": "sim-02",
+      "passed": 44
+    },
+    {
+      "problem": "sim-03",
+      "passed": 44
+    },
+    {
+      "problem": "sim-04",
+      "passed": 44
+    },
+    {
+      "problem": "arr-01",
+      "passed": 44
+    },
+    {
+      "problem": "arr-02",
+      "passed": 44
+    },
+    {
+      "problem": "arr-03",
+      "passed": 44
+    },
+    {
+      "problem": "arr-04",
+      "passed": 44
+    },
+    {
+      "problem": "bus-01",
+      "passed": 44
+    },
+    {
+      "problem": "bus-02",
+      "passed": 44
+    },
+    {
+      "problem": "bus-03",
+      "passed": 44
+    },
+    {
+      "problem": "bus-04",
+      "passed": 45
+    }
+  ],
+  "total": 529
+}

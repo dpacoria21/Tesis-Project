@@ -1,0 +1,323 @@
+{
+  "$defs": {
+    "Concept": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "topics": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Topics",
+          "type": "array"
+        },
+        "language": {
+          "default": "es",
+          "title": "Language",
+          "type": "string"
+        },
+        "min_level": {
+          "default": 2,
+          "maximum": 3,
+          "minimum": 0,
+          "title": "Min Level",
+          "type": "integer"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "text",
+        "topics",
+        "provenance"
+      ],
+      "title": "Concept",
+      "type": "object"
+    },
+    "Example": {
+      "additionalProperties": false,
+      "properties": {
+        "input": {
+          "title": "Input",
+          "type": "string"
+        },
+        "output": {
+          "title": "Output",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input",
+        "output"
+      ],
+      "title": "Example",
+      "type": "object"
+    },
+    "Guidance": {
+      "additionalProperties": false,
+      "properties": {
+        "level": {
+          "maximum": 3,
+          "minimum": 0,
+          "title": "Level",
+          "type": "integer"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "step": {
+          "title": "Step",
+          "type": "string"
+        }
+      },
+      "required": [
+        "level",
+        "text",
+        "step"
+      ],
+      "title": "Guidance",
+      "type": "object"
+    },
+    "Problem": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "statement": {
+          "title": "Statement",
+          "type": "string"
+        },
+        "constraints": {
+          "title": "Constraints",
+          "type": "string"
+        },
+        "input_format": {
+          "title": "Input Format",
+          "type": "string"
+        },
+        "output_format": {
+          "title": "Output Format",
+          "type": "string"
+        },
+        "examples": {
+          "items": {
+            "$ref": "#/$defs/Example"
+          },
+          "minItems": 1,
+          "title": "Examples",
+          "type": "array"
+        },
+        "topics": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Topics",
+          "type": "array"
+        },
+        "prerequisites": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Prerequisites",
+          "type": "array"
+        },
+        "difficulty": {
+          "maximum": 5,
+          "minimum": 1,
+          "title": "Difficulty",
+          "type": "integer"
+        },
+        "difficulty_scale": {
+          "default": "demo_local_1_5",
+          "title": "Difficulty Scale",
+          "type": "string"
+        },
+        "language": {
+          "default": "es",
+          "title": "Language",
+          "type": "string"
+        },
+        "programming_language": {
+          "default": "C++17",
+          "title": "Programming Language",
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "explanation": {
+          "title": "Explanation",
+          "type": "string"
+        },
+        "reference_strategy": {
+          "title": "Reference Strategy",
+          "type": "string"
+        },
+        "reference_cpp": {
+          "title": "Reference Cpp",
+          "type": "string"
+        },
+        "common_errors": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Common Errors",
+          "type": "array"
+        },
+        "tests": {
+          "items": {
+            "$ref": "#/$defs/Example"
+          },
+          "minItems": 2,
+          "title": "Tests",
+          "type": "array"
+        },
+        "guidance": {
+          "items": {
+            "$ref": "#/$defs/Guidance"
+          },
+          "minItems": 4,
+          "title": "Guidance",
+          "type": "array"
+        },
+        "concept_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Concept Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "statement",
+        "constraints",
+        "input_format",
+        "output_format",
+        "examples",
+        "topics",
+        "prerequisites",
+        "difficulty",
+        "provenance",
+        "explanation",
+        "reference_strategy",
+        "reference_cpp",
+        "common_errors",
+        "tests",
+        "guidance",
+        "concept_ids"
+      ],
+      "title": "Problem",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "original_demo",
+            "external"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "platform": {
+          "title": "Platform",
+          "type": "string"
+        },
+        "external_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "External Id"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Url"
+        },
+        "review_status": {
+          "title": "Review Status",
+          "type": "string"
+        },
+        "license_note": {
+          "title": "License Note",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "platform",
+        "review_status",
+        "license_note"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "problems": {
+      "items": {
+        "$ref": "#/$defs/Problem"
+      },
+      "title": "Problems",
+      "type": "array"
+    },
+    "concepts": {
+      "items": {
+        "$ref": "#/$defs/Concept"
+      },
+      "title": "Concepts",
+      "type": "array"
+    }
+  },
+  "required": [
+    "problems",
+    "concepts"
+  ],
+  "title": "Corpus",
+  "type": "object"
+}

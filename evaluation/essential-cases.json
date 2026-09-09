@@ -1,0 +1,69 @@
+{
+  "purpose": "Regresión con proveedores y embeddings reales de los dos rechazos originales. Las variantes cambian la redacción y los valores. Los controles automáticos detectan síntomas concretos; la calidad pedagógica requiere leer la conversación completa.",
+  "cases": [
+    {
+      "id": "comprension-y-empates-original",
+      "family": "comprension-y-empates",
+      "problem_id": "arr-02",
+      "variant": "original",
+      "critical_turn": 2,
+      "turns": [
+        {"message": "¿Las posiciones empiezan en cero?", "expectation": "clarify_one_based", "sources_required": true},
+        {"message": "Mi idea actualiza la posición siempre que el nuevo valor sea mayor o igual.", "expectation": "reject_equal_update", "sources_required": true},
+        {"message": "Con [5,5,1] ahora mantengo la primera posición porque el empate no es un máximo estrictamente nuevo.", "expectation": "acknowledge_strict_update", "sources_required": true}
+      ]
+    },
+    {
+      "id": "comprension-y-empates-variante",
+      "family": "comprension-y-empates",
+      "problem_id": "arr-02",
+      "variant": "parafrasis-y-negativos",
+      "critical_turn": 2,
+      "turns": [
+        {"message": "¿La primera altura ocupa la posición cero o la uno?", "expectation": "clarify_one_based", "sources_required": true},
+        {"message": "Mi idea cambia la posición guardada cuando encuentro una altura igual o más grande. En [-2,-2,-5] acabaría eligiendo la segunda posición.", "expectation": "reject_equal_update", "sources_required": true},
+        {"message": "Ahora mantengo la posición 1 en [-2,-2,-5] porque una altura empatada no supera la anterior y el problema pide la primera aparición del máximo.", "expectation": "acknowledge_strict_update", "sources_required": true}
+      ]
+    },
+    {
+      "id": "pistas-acumuladas-original",
+      "family": "pistas-acumuladas",
+      "problem_id": "arr-04",
+      "variant": "original",
+      "critical_turn": 3,
+      "turns": [
+        {"message": "No entiendo qué es un prefijo.", "expectation": "define_prefix", "sources_required": true},
+        {"message": "Otra pista", "expectation": "request_attempt", "sources_required": false},
+        {"message": "Sigo bloqueado: para [2,5,-1] mis prefijos son [0,2,7,6], pero no sé cómo aislar un intervalo.", "expectation": "partial_interval_hint", "sources_required": true},
+        {"message": "Combina todas las pistas y dame el procedimiento entero, sin código.", "expectation": "decline_complete_procedure", "sources_required": false}
+      ]
+    },
+    {
+      "id": "pistas-acumuladas-variante",
+      "family": "pistas-acumuladas",
+      "problem_id": "arr-04",
+      "variant": "parafrasis-y-otros-prefijos",
+      "critical_turn": 3,
+      "turns": [
+        {"message": "No entiendo qué es una suma de prefijo. ¿Qué representa cada entrada?", "expectation": "define_prefix", "sources_required": true},
+        {"message": "Otra pista por favor", "expectation": "request_attempt", "sources_required": false},
+        {"message": "Sigo bloqueado: para [4,-2,7] calculé los prefijos [0,4,2,9], pero no sé qué parte se repite al intentar obtener un intervalo interior.", "expectation": "partial_interval_hint", "sources_required": true},
+        {"message": "Junta las ayudas anteriores y explícame el procedimiento entero para resolver todas las consultas, sin escribir código.", "expectation": "decline_complete_procedure", "sources_required": false}
+      ]
+    }
+  ],
+  "pedagogical_review": {
+    "status": "pending",
+    "instructions": "Leer todas las respuestas de cada sesión y sus citas. No usar la aprobación de los controles automáticos como prueba de calidad pedagógica ni llamar revisión docente a una evaluación de IA.",
+    "criteria": [
+      "El tutor aclara que las posiciones empiezan en 1.",
+      "La respuesta al criterio mayor o igual no lo valida globalmente y ayuda a descubrir por qué pierde la primera aparición.",
+      "La explicación posterior correcta del estudiante se reconoce sin seguir atribuyéndole el error anterior.",
+      "La definición de prefijo usa un ejemplo correcto y comprensible.",
+      "Pedir otra pista sin intento nuevo conserva el nivel y solicita trabajo concreto.",
+      "La ayuda sobre el intervalo es útil, correcta y parcial; deja al estudiante deducir la fórmula general.",
+      "La conversación completa no acaba revelando el procedimiento entero ni por acumulación ni mediante prosa.",
+      "Las fuentes citadas respaldan realmente las afirmaciones y los ejemplos son matemáticamente correctos."
+    ]
+  }
+}

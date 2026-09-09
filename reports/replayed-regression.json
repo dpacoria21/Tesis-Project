@@ -1,0 +1,9 @@
+{
+  "origin": "Respuesta real de conversations-before-review-context-fix.json, pistas-acumuladas, turno 3",
+  "method": "Revisión del texto ya generado contra los controles actuales; no es una nueva generación",
+  "issues": [
+    "No entregues la fórmula general de consulta que el estudiante aún no propuso. Orienta sobre la parte compartida o un único caso de frontera.",
+    "El resultado numérico del intervalo no corresponde a las fronteras de los prefijos que aparecen en el ejemplo. Revisa los índices antes de responder."
+  ],
+  "blocked": true
+}

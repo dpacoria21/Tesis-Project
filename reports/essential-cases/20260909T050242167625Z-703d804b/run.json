@@ -1,0 +1,60 @@
+{
+  "run_id": "20260909T050242167625Z-703d804b",
+  "started_at": "2026-09-09T05:02:42.170625+00:00",
+  "provider": "openai_compatible",
+  "model": "C:\\Users\\diego\\.cache\\huggingface\\hub\\models--Qwen--Qwen3-14B-GGUF\\snapshots\\530227a7d994db8eca5ab5ced2fb692b614357fd\\Qwen3-14B-Q4_K_M.gguf",
+  "revision": "530227a7d994db8eca5ab5ced2fb692b614357fd",
+  "temperature": 0.2,
+  "max_tokens": 1000,
+  "retries": 2,
+  "response_format": "json_schema",
+  "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "embedding_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+  "suite_sha256": "a56386b57a6f5fa66c2867d1cd13b206a5355789d6b427b672149cf93cd2a748",
+  "corpus_sha256": "c1628ca1ed5ab7799879af2bb93da3a4688f4a4cb91c7d2cd7a8a8c8c841a9a4",
+  "source_sha256": {
+    "tutor\\__init__.py": "83fe79a3b73b8ac73f5ba35898146ad77cb5af61e4af6f9ab2fae87cba84be3f",
+    "tutor\\api.py": "7d27e1a73db1e7b13e9ef25bb2344dac0c290831ede381cea562bc6d30c3b8ee",
+    "tutor\\cli.py": "836ede1c8cd7152d733a14b6b11e98ff086474f83df7d963e19c89f6434fbfee",
+    "tutor\\config.py": "29985860fc2f7307ec8708aff73bd7487b16332e935663f25aad1b0ec404d394",
+    "tutor\\corpus.py": "537c2c739cee894e4cd2aa4b73f1c0936fca2673ff75ce3e2dedb458c244c8c4",
+    "tutor\\execution.py": "9e6ac2377b846e5457e9f4229ec61a5d984602e0a245f3f9b84fb6f3a4ffd68c",
+    "tutor\\local_provider.py": "2f85fde2cb86f5861ad7330b89cecb68d3df8f301e00424e45332f337aa9de7e",
+    "tutor\\models.py": "d40861376e2d5443638d17513fbfc040fb4aa577722e2cc3d38388d0fa409e6f",
+    "tutor\\pedagogy.py": "96ccd8c63b166b517d24c530a2641f9ba6ac0fd749de04f474c06d0b8d3af790",
+    "tutor\\provider.py": "625e32969e15ce309ce965b134a36af61b11661fc28c4a7302bb660c2ec3a00e",
+    "tutor\\reasoning_checks.py": "a5883e253c31c0499ea14c1107515117a05c491f78e802b0c2135a16b7c70002",
+    "tutor\\recommend.py": "21d2a8e504857274aa7919c899ef3db61c8e2a89071514ef8ddf26934058ab7d",
+    "tutor\\reference.py": "fa91b46ab5b5e3972d416952cb5881331f1375d14a35b16a18894e8b0e8a3d55",
+    "tutor\\response_contract.py": "392289c4b06311ca78b33fbf5f1e3749b8b6d828a36741b4817ea1bfb32ae743",
+    "tutor\\retrieval.py": "9f31cb466c71600d81dbf80f234a7955b4fa6497780e7748a69990736ba8c5c8",
+    "tutor\\service.py": "4b164a63aec488d914fad75a5f4227266ada0c6eab707595582a379412f82547",
+    "tutor\\storage.py": "64afe353fa06d3472d764736b87501f88a1b680e2230c1fe3fa25fb1eaf76f04",
+    "tutor\\structured.py": "8cf97d06b62843e40d2e55476e5f28e4e876a9e59993475885d0db26f1c7c7ec"
+  },
+  "repeats": 1,
+  "cases": [
+    "comprension-y-empates-original",
+    "comprension-y-empates-variante",
+    "pistas-acumuladas-original",
+    "pistas-acumuladas-variante"
+  ],
+  "data_dir": "C:\\Users\\diego\\OneDrive\\Desktop\\tesis-pc\\data\\essential-verification\\20260909T050242167625Z-703d804b",
+  "output_dir": "C:\\Users\\diego\\OneDrive\\Desktop\\tesis-pc\\reports\\essential-cases\\20260909T050242167625Z-703d804b",
+  "scope": "Proveedor y embeddings reales; ninguna respuesta de prueba sustituye al servicio.",
+  "interpretation": "La aprobación automática cubre los síntomas comprobados. No demuestra ausencia de otros errores, utilidad de las pistas ni validez pedagógica general.",
+  "pedagogical_review": {
+    "status": "pending",
+    "instructions": "Leer todas las respuestas de cada sesión y sus citas. No usar la aprobación de los controles automáticos como prueba de calidad pedagógica ni llamar revisión docente a una evaluación de IA.",
+    "criteria": [
+      "El tutor aclara que las posiciones empiezan en 1.",
+      "La respuesta al criterio mayor o igual no lo valida globalmente y ayuda a descubrir por qué pierde la primera aparición.",
+      "La explicación posterior correcta del estudiante se reconoce sin seguir atribuyéndole el error anterior.",
+      "La definición de prefijo usa un ejemplo correcto y comprensible.",
+      "Pedir otra pista sin intento nuevo conserva el nivel y solicita trabajo concreto.",
+      "La ayuda sobre el intervalo es útil, correcta y parcial; deja al estudiante deducir la fórmula general.",
+      "La conversación completa no acaba revelando el procedimiento entero ni por acumulación ni mediante prosa.",
+      "Las fuentes citadas respaldan realmente las afirmaciones y los ejemplos son matemáticamente correctos."
+    ]
+  }
+}

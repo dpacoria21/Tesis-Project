@@ -1,0 +1,53 @@
+{
+  "http_server": "uvicorn real en localhost",
+  "catalog_count": 12,
+  "persisted_interactions": 3,
+  "public_projection": "verified",
+  "missing_code_question": "verified",
+  "recommendation": "verified",
+  "llm_failure": "no inducido",
+  "console_resume": "verified in another process",
+  "embeddings": "Sentence Transformers reales",
+  "llm_real": "respuesta real incluida",
+  "generated_response": {
+    "interaction_id": "3a506b6b37e74b558d46288a5ea62c30",
+    "message": "El problema pide calcular la suma exacta de n mediciones enteras, incluso si son negativas. Por ejemplo, con 3 mediciones 3, -2 y 4, la suma es 5.",
+    "intervention": "comprension",
+    "help_level": 0,
+    "sources": [
+      {
+        "chunk_id": "arr-01:statement",
+        "title": "Balance de mediciones",
+        "provenance": {
+          "kind": "original_demo",
+          "platform": "Material propio de demostración",
+          "external_id": null,
+          "url": null,
+          "review_status": "Comprobación automática; revisión docente pendiente",
+          "license_note": "Material original del prototipo. Uso educativo permitido."
+        }
+      },
+      {
+        "chunk_id": "arr-01:hint:0",
+        "title": "Balance de mediciones",
+        "provenance": {
+          "kind": "original_demo",
+          "platform": "Material propio de demostración",
+          "external_id": null,
+          "url": null,
+          "review_status": "Comprobación automática; revisión docente pendiente",
+          "license_note": "Material original del prototipo. Uso educativo permitido."
+        }
+      }
+    ],
+    "checks": {
+      "status": "no ejecutado",
+      "origin": "ninguna",
+      "detail": "No se solicitó ejecución de código.",
+      "passed": 0,
+      "total": 0
+    },
+    "reported_result": null,
+    "code_observation": null
+  }
+}

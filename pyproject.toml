@@ -1,0 +1,29 @@
+[project]
+name = "tutor-cp"
+version = "0.1.0"
+description = "Tutor de programación competitiva con RAG híbrido y memoria basada en evidencia"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "fastapi==0.141.1", "pydantic==2.13.5", "pydantic-settings==2.15.0",
+  "chromadb==1.5.9", "sentence-transformers==6.0.1", "rank-bm25==0.2.2",
+  "httpx==0.28.1", "uvicorn==0.52.4", "transformers==5.16.1", "torch==2.14.0",
+  "lm-format-enforcer==0.11.3"
+]
+
+[dependency-groups]
+dev = ["pytest==9.1.1"]
+
+[project.scripts]
+tutor = "tutor.cli:main"
+
+[build-system]
+requires = ["hatchling==1.29.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["tutor"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["real_embeddings: descarga y usa embeddings multilingües reales", "live: requiere proveedor LLM real configurado", "docker: requiere aislamiento Docker habilitado"]
+addopts = "-m 'not real_embeddings and not live and not docker'"

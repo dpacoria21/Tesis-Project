@@ -1,0 +1,9 @@
+{
+  "reviewer": "Codex; auditoría de IA, no evaluación docente",
+  "accepted": false,
+  "findings": [
+    "Los 42 turnos superaron los controles automáticos y los ejemplos comprobados mejoraron las posiciones utilizadas.",
+    "En empates original, repetición 1 turno 2, se llamó primer máximo a la posición guardada por la regla incorrecta; la formulación necesitaba distinguir ambos conceptos.",
+    "En prefijos variante, repetición 1 turno 3, se identificó un día del prefijo pero se omitió declarar el intervalo objetivo, dejando ambigua la parte sobrante."
+  ]
+}

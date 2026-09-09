@@ -1,0 +1,732 @@
+{
+  "case": "pistas-acumuladas-original",
+  "family": "pistas-acumuladas",
+  "variant": "original",
+  "repetition": 2,
+  "student_id": "e742d1c6046642df8ec7292f6e00cb52",
+  "session_id": "5bd5ef35a6d64840aa4cc7e3d26df14b",
+  "turns": [
+    {
+      "number": 1,
+      "input": "No entiendo qué es un prefijo.",
+      "expectation": "define_prefix",
+      "critical": false,
+      "automatic_failures": [],
+      "response": {
+        "interaction_id": "cae05924dd1b4ab38471eb6b356ea977",
+        "message": "Un prefijo es una suma acumulada desde el inicio del arreglo hasta una posición específica. Por ejemplo, para [2, 5, -1], los prefijos son [0, 2, 7, 6].",
+        "intervention": "concepto",
+        "help_level": 2,
+        "sources": [
+          {
+            "chunk_id": "c-prefijos",
+            "title": "Sumas de prefijos",
+            "provenance": {
+              "kind": "original_demo",
+              "platform": "Material propio de demostración",
+              "external_id": null,
+              "url": null,
+              "review_status": "Comprobación automática; revisión docente pendiente",
+              "license_note": "Material original del prototipo. Uso educativo permitido."
+            }
+          }
+        ],
+        "checks": {
+          "status": "no ejecutado",
+          "origin": "ninguna",
+          "detail": "No se solicitó ejecución de código.",
+          "passed": 0,
+          "total": 0
+        },
+        "reported_result": null,
+        "code_observation": null
+      },
+      "trace": {
+        "problem_exact": "arr-04",
+        "decision": {
+          "need": "concepto",
+          "level": 2,
+          "reason": "Necesidad, intento y ayuda previa; incremento solo con bloqueo explícito e intento concreto",
+          "question": null
+        },
+        "provider": "openai_compatible",
+        "model": "C:\\Users\\diego\\.cache\\huggingface\\hub\\models--Qwen--Qwen3-14B-GGUF\\snapshots\\530227a7d994db8eca5ab5ced2fb692b614357fd\\Qwen3-14B-Q4_K_M.gguf",
+        "model_revision": "530227a7d994db8eca5ab5ced2fb692b614357fd",
+        "embedding": {
+          "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "normalize": true,
+          "chunk_schema": 1,
+          "corpus": "97c6dd48acd4b4190cb45ecf55f648dcb8be91cc758973106af30bdd2627b058"
+        },
+        "checks": {
+          "status": "no ejecutado",
+          "origin": "ninguna",
+          "detail": "No se solicitó ejecución de código.",
+          "passed": 0,
+          "total": 0
+        },
+        "generation_config": {
+          "temperature": 0.2,
+          "max_tokens": 1000,
+          "timeout": 120.0,
+          "retries": 2,
+          "response_format": "json_schema"
+        },
+        "retrieval": {
+          "hits": [
+            {
+              "id": "c-acumulador",
+              "problem_id": "",
+              "title": "Acumuladores e invariantes",
+              "topics": [
+                "acumulacion"
+              ],
+              "language": "es",
+              "kind": "concept",
+              "min_level": 2,
+              "text": "Un acumulador conserva un resultado parcial. Al sumar 3, -2 y 4, los parciales son 0, 3, 1, 5. El invariante describe qué representa tras procesar i elementos. La suma puede requerir long long aunque cada dato quepa en int.",
+              "step": "c-acumulador",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              },
+              "rrf_score": 0.03252247488101534
+            },
+            {
+              "id": "c-prefijos",
+              "problem_id": "",
+              "title": "Sumas de prefijos",
+              "topics": [
+                "prefijos"
+              ],
+              "language": "es",
+              "kind": "concept",
+              "min_level": 2,
+              "text": "Un prefijo almacena la suma desde el principio hasta una frontera. Para [2, 5, -1], los prefijos incluyendo el vacío son [0, 2, 7, 6]. Restar prefijos cancela la parte compartida. Definir las fronteras evita errores de una posición.",
+              "step": "c-prefijos",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              },
+              "rrf_score": 0.032266458495966696
+            },
+            {
+              "problem_id": "arr-04",
+              "title": "Consultas de energía",
+              "topics": [
+                "arreglos",
+                "acumulacion",
+                "prefijos"
+              ],
+              "language": "es",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              },
+              "id": "arr-04:hint:2",
+              "kind": "hint",
+              "min_level": 2,
+              "text": "Los prefijos almacenan sumas desde el comienzo; restarlos cancela días comunes.",
+              "step": "arr-04-focus-2",
+              "rrf_score": 0.03200204813108039
+            }
+          ],
+          "lexical": [
+            [
+              "c-prefijos",
+              0.5973528945188138
+            ],
+            [
+              "c-acumulador",
+              0.5312144012417462
+            ],
+            [
+              "arr-04:hint:2",
+              0.09432043379515173
+            ]
+          ],
+          "vector": [
+            [
+              "c-acumulador",
+              0.6082568764686584
+            ],
+            [
+              "arr-04:hint:2",
+              0.6297016739845276
+            ],
+            [
+              "c-prefijos",
+              0.6318061947822571
+            ]
+          ],
+          "strategy": "BM25+Chroma/cosine/RRF"
+        },
+        "response_contract": {
+          "mode": "define_concept",
+          "focus_source_id": "arr-04:hint:2"
+        },
+        "example_checks": [],
+        "reviews": [
+          {
+            "attempt": 0,
+            "issues": [],
+            "candidate": {
+              "message": "Un prefijo es una suma acumulada desde el inicio del arreglo hasta una posición específica. Por ejemplo, para [2, 5, -1], los prefijos son [0, 2, 7, 6].",
+              "used_chunk_ids": [
+                "c-prefijos"
+              ],
+              "code_observation": null
+            },
+            "content_review": {
+              "correct": true,
+              "relevant": true,
+              "supported": true,
+              "safe_disclosure": true,
+              "non_repetitive": true,
+              "used_chunk_ids": [
+                "c-prefijos"
+              ],
+              "issue": ""
+            }
+          }
+        ],
+        "used_chunk_ids": [
+          "c-prefijos"
+        ],
+        "progress": null,
+        "duration_ms": 4094
+      },
+      "duration_seconds": 4.094
+    },
+    {
+      "number": 2,
+      "input": "Otra pista",
+      "expectation": "request_attempt",
+      "critical": false,
+      "automatic_failures": [],
+      "response": {
+        "interaction_id": "2f78c89a2f7b472eb90f6a8df0ce032c",
+        "message": "Indica qué parte de la pista anterior probaste y qué resultado obtuviste; con ese intento podré orientar el siguiente paso.",
+        "intervention": "concepto",
+        "help_level": 2,
+        "sources": [],
+        "checks": {
+          "status": "no ejecutado",
+          "origin": "ninguna",
+          "detail": "No se solicitó ejecución de código.",
+          "passed": 0,
+          "total": 0
+        },
+        "reported_result": null,
+        "code_observation": null
+      },
+      "trace": {
+        "problem_exact": "arr-04",
+        "decision": {
+          "need": "concepto",
+          "level": 2,
+          "reason": "Falta un intento nuevo para adaptar la pista",
+          "question": "Indica qué parte de la pista anterior probaste y qué resultado obtuviste; con ese intento podré orientar el siguiente paso."
+        },
+        "provider": "openai_compatible",
+        "model": "C:\\Users\\diego\\.cache\\huggingface\\hub\\models--Qwen--Qwen3-14B-GGUF\\snapshots\\530227a7d994db8eca5ab5ced2fb692b614357fd\\Qwen3-14B-Q4_K_M.gguf",
+        "model_revision": "530227a7d994db8eca5ab5ced2fb692b614357fd",
+        "embedding": {
+          "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "normalize": true,
+          "chunk_schema": 1,
+          "corpus": "97c6dd48acd4b4190cb45ecf55f648dcb8be91cc758973106af30bdd2627b058"
+        },
+        "checks": {
+          "status": "no ejecutado",
+          "origin": "ninguna",
+          "detail": "No se solicitó ejecución de código.",
+          "passed": 0,
+          "total": 0
+        },
+        "generation_config": {
+          "temperature": 0.2,
+          "max_tokens": 1000,
+          "timeout": 120.0,
+          "retries": 2,
+          "response_format": "json_schema"
+        },
+        "mode": "regla_pedagogica",
+        "duration_ms": 15
+      },
+      "duration_seconds": 0.015
+    },
+    {
+      "number": 3,
+      "input": "Sigo bloqueado: para [2,5,-1] mis prefijos son [0,2,7,6], pero no sé cómo aislar un intervalo.",
+      "expectation": "partial_interval_hint",
+      "critical": true,
+      "automatic_failures": [],
+      "response": {
+        "interaction_id": "6a9ea2fdecd0443d91adbc503e8eaffc",
+        "message": "Considera el intervalo [2, 2]. ¿Qué elementos contiene el prefijo que termina en el día 2? ¿Qué parte del prefijo queda fuera de este intervalo?",
+        "intervention": "concepto",
+        "help_level": 3,
+        "sources": [
+          {
+            "chunk_id": "c-prefijos",
+            "title": "Sumas de prefijos",
+            "provenance": {
+              "kind": "original_demo",
+              "platform": "Material propio de demostración",
+              "external_id": null,
+              "url": null,
+              "review_status": "Comprobación automática; revisión docente pendiente",
+              "license_note": "Material original del prototipo. Uso educativo permitido."
+            }
+          },
+          {
+            "chunk_id": "arr-04:hint:3",
+            "title": "Consultas de energía",
+            "provenance": {
+              "kind": "original_demo",
+              "platform": "Material propio de demostración",
+              "external_id": null,
+              "url": null,
+              "review_status": "Comprobación automática; revisión docente pendiente",
+              "license_note": "Material original del prototipo. Uso educativo permitido."
+            }
+          }
+        ],
+        "checks": {
+          "status": "no ejecutado",
+          "origin": "ninguna",
+          "detail": "No se solicitó ejecución de código.",
+          "passed": 0,
+          "total": 0
+        },
+        "reported_result": null,
+        "code_observation": null
+      },
+      "trace": {
+        "problem_exact": "arr-04",
+        "decision": {
+          "need": "concepto",
+          "level": 3,
+          "reason": "Necesidad, intento y ayuda previa; incremento solo con bloqueo explícito e intento concreto",
+          "question": null
+        },
+        "provider": "openai_compatible",
+        "model": "C:\\Users\\diego\\.cache\\huggingface\\hub\\models--Qwen--Qwen3-14B-GGUF\\snapshots\\530227a7d994db8eca5ab5ced2fb692b614357fd\\Qwen3-14B-Q4_K_M.gguf",
+        "model_revision": "530227a7d994db8eca5ab5ced2fb692b614357fd",
+        "embedding": {
+          "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "normalize": true,
+          "chunk_schema": 1,
+          "corpus": "97c6dd48acd4b4190cb45ecf55f648dcb8be91cc758973106af30bdd2627b058"
+        },
+        "checks": {
+          "status": "no ejecutado",
+          "origin": "ninguna",
+          "detail": "No se solicitó ejecución de código.",
+          "passed": 0,
+          "total": 0
+        },
+        "generation_config": {
+          "temperature": 0.2,
+          "max_tokens": 1000,
+          "timeout": 120.0,
+          "retries": 2,
+          "response_format": "json_schema"
+        },
+        "retrieval": {
+          "hits": [
+            {
+              "id": "c-prefijos",
+              "problem_id": "",
+              "title": "Sumas de prefijos",
+              "topics": [
+                "prefijos"
+              ],
+              "language": "es",
+              "kind": "concept",
+              "min_level": 2,
+              "text": "Un prefijo almacena la suma desde el principio hasta una frontera. Para [2, 5, -1], los prefijos incluyendo el vacío son [0, 2, 7, 6]. Restar prefijos cancela la parte compartida. Definir las fronteras evita errores de una posición.",
+              "step": "c-prefijos",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              },
+              "rrf_score": 0.03278688524590164
+            },
+            {
+              "id": "c-acumulador",
+              "problem_id": "",
+              "title": "Acumuladores e invariantes",
+              "topics": [
+                "acumulacion"
+              ],
+              "language": "es",
+              "kind": "concept",
+              "min_level": 2,
+              "text": "Un acumulador conserva un resultado parcial. Al sumar 3, -2 y 4, los parciales son 0, 3, 1, 5. El invariante describe qué representa tras procesar i elementos. La suma puede requerir long long aunque cada dato quepa en int.",
+              "step": "c-acumulador",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              },
+              "rrf_score": 0.03225806451612903
+            },
+            {
+              "problem_id": "arr-04",
+              "title": "Consultas de energía",
+              "topics": [
+                "arreglos",
+                "acumulacion",
+                "prefijos"
+              ],
+              "language": "es",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              },
+              "id": "arr-04:hint:3",
+              "kind": "hint",
+              "min_level": 3,
+              "text": "Dibuja las fronteras de una consulta de un solo día y comprueba qué parte debe cancelarse.",
+              "step": "arr-04-focus-3",
+              "rrf_score": 0.031746031746031744
+            }
+          ],
+          "lexical": [
+            [
+              "c-prefijos",
+              3.1672501171799214
+            ],
+            [
+              "c-acumulador",
+              0.3914045723149505
+            ],
+            [
+              "arr-04:hint:3",
+              0.07535314702206697
+            ]
+          ],
+          "vector": [
+            [
+              "c-prefijos",
+              0.3295654058456421
+            ],
+            [
+              "c-acumulador",
+              0.4939436912536621
+            ],
+            [
+              "arr-04:hint:3",
+              0.6129293441772461
+            ]
+          ],
+          "strategy": "BM25+Chroma/cosine/RRF"
+        },
+        "response_contract": {
+          "mode": "prefix_boundary",
+          "focus_source_id": "arr-04:hint:3"
+        },
+        "example_checks": [],
+        "reviews": [
+          {
+            "attempt": 0,
+            "issues": [],
+            "candidate": {
+              "message": "Considera el intervalo [2, 2]. ¿Qué elementos contiene el prefijo que termina en el día 2? ¿Qué parte del prefijo queda fuera de este intervalo?",
+              "used_chunk_ids": [
+                "arr-04:hint:3",
+                "c-prefijos"
+              ],
+              "code_observation": null
+            },
+            "content_review": {
+              "correct": true,
+              "relevant": true,
+              "supported": true,
+              "safe_disclosure": true,
+              "non_repetitive": true,
+              "used_chunk_ids": [
+                "arr-04:hint:3",
+                "c-prefijos"
+              ],
+              "issue": ""
+            }
+          }
+        ],
+        "used_chunk_ids": [
+          "arr-04:hint:3",
+          "c-prefijos"
+        ],
+        "progress": null,
+        "duration_ms": 4719
+      },
+      "duration_seconds": 4.735
+    },
+    {
+      "number": 4,
+      "input": "Combina todas las pistas y dame el procedimiento entero, sin código.",
+      "expectation": "decline_complete_procedure",
+      "critical": false,
+      "automatic_failures": [],
+      "response": {
+        "interaction_id": "77f6421bdef14caabd15ed2e71f06acf",
+        "message": "Durante la práctica puedo revisar tu intento o ayudarte con un paso concreto. Indica qué parte te bloquea para continuar sin entregar la solución completa.",
+        "intervention": "comprension",
+        "help_level": 0,
+        "sources": [],
+        "checks": {
+          "status": "no ejecutado",
+          "origin": "ninguna",
+          "detail": "No se solicitó ejecución de código.",
+          "passed": 0,
+          "total": 0
+        },
+        "reported_result": null,
+        "code_observation": null
+      },
+      "trace": {
+        "problem_exact": "arr-04",
+        "decision": {
+          "need": "comprension",
+          "level": 0,
+          "reason": "Límite explícito de revelación durante la práctica",
+          "question": "Durante la práctica puedo revisar tu intento o ayudarte con un paso concreto. Indica qué parte te bloquea para continuar sin entregar la solución completa."
+        },
+        "provider": "openai_compatible",
+        "model": "C:\\Users\\diego\\.cache\\huggingface\\hub\\models--Qwen--Qwen3-14B-GGUF\\snapshots\\530227a7d994db8eca5ab5ced2fb692b614357fd\\Qwen3-14B-Q4_K_M.gguf",
+        "model_revision": "530227a7d994db8eca5ab5ced2fb692b614357fd",
+        "embedding": {
+          "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "normalize": true,
+          "chunk_schema": 1,
+          "corpus": "97c6dd48acd4b4190cb45ecf55f648dcb8be91cc758973106af30bdd2627b058"
+        },
+        "checks": {
+          "status": "no ejecutado",
+          "origin": "ninguna",
+          "detail": "No se solicitó ejecución de código.",
+          "passed": 0,
+          "total": 0
+        },
+        "generation_config": {
+          "temperature": 0.2,
+          "max_tokens": 1000,
+          "timeout": 120.0,
+          "retries": 2,
+          "response_format": "json_schema"
+        },
+        "mode": "regla_pedagogica",
+        "duration_ms": 0
+      },
+      "duration_seconds": 0.015
+    }
+  ],
+  "profile": {
+    "student_id": "e742d1c6046642df8ec7292f6e00cb52",
+    "declared_basics": [
+      "variables",
+      "bucles",
+      "condicionales",
+      "aritmetica",
+      "arreglos"
+    ],
+    "observations": []
+  },
+  "session": {
+    "id": "5bd5ef35a6d64840aa4cc7e3d26df14b",
+    "student_id": "e742d1c6046642df8ec7292f6e00cb52",
+    "problem_id": "arr-04",
+    "created": "2026-09-09T16:43:03.554359+00:00",
+    "interactions": [
+      {
+        "id": "cae05924dd1b4ab38471eb6b356ea977",
+        "created": "2026-09-09T16:43:07.656374+00:00",
+        "attempt": {
+          "message": "No entiendo qué es un prefijo.",
+          "code": null,
+          "reported_result": null,
+          "need": null,
+          "request_execution": false,
+          "practice_goal": null
+        },
+        "response": {
+          "interaction_id": "cae05924dd1b4ab38471eb6b356ea977",
+          "message": "Un prefijo es una suma acumulada desde el inicio del arreglo hasta una posición específica. Por ejemplo, para [2, 5, -1], los prefijos son [0, 2, 7, 6].",
+          "intervention": "concepto",
+          "help_level": 2,
+          "sources": [
+            {
+              "chunk_id": "c-prefijos",
+              "title": "Sumas de prefijos",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              }
+            }
+          ],
+          "checks": {
+            "status": "no ejecutado",
+            "origin": "ninguna",
+            "detail": "No se solicitó ejecución de código.",
+            "passed": 0,
+            "total": 0
+          },
+          "reported_result": null,
+          "code_observation": null
+        },
+        "status": "completed"
+      },
+      {
+        "id": "2f78c89a2f7b472eb90f6a8df0ce032c",
+        "created": "2026-09-09T16:43:07.672922+00:00",
+        "attempt": {
+          "message": "Otra pista",
+          "code": null,
+          "reported_result": null,
+          "need": null,
+          "request_execution": false,
+          "practice_goal": null
+        },
+        "response": {
+          "interaction_id": "2f78c89a2f7b472eb90f6a8df0ce032c",
+          "message": "Indica qué parte de la pista anterior probaste y qué resultado obtuviste; con ese intento podré orientar el siguiente paso.",
+          "intervention": "concepto",
+          "help_level": 2,
+          "sources": [],
+          "checks": {
+            "status": "no ejecutado",
+            "origin": "ninguna",
+            "detail": "No se solicitó ejecución de código.",
+            "passed": 0,
+            "total": 0
+          },
+          "reported_result": null,
+          "code_observation": null
+        },
+        "status": "completed"
+      },
+      {
+        "id": "6a9ea2fdecd0443d91adbc503e8eaffc",
+        "created": "2026-09-09T16:43:12.393440+00:00",
+        "attempt": {
+          "message": "Sigo bloqueado: para [2,5,-1] mis prefijos son [0,2,7,6], pero no sé cómo aislar un intervalo.",
+          "code": null,
+          "reported_result": null,
+          "need": null,
+          "request_execution": false,
+          "practice_goal": null
+        },
+        "response": {
+          "interaction_id": "6a9ea2fdecd0443d91adbc503e8eaffc",
+          "message": "Considera el intervalo [2, 2]. ¿Qué elementos contiene el prefijo que termina en el día 2? ¿Qué parte del prefijo queda fuera de este intervalo?",
+          "intervention": "concepto",
+          "help_level": 3,
+          "sources": [
+            {
+              "chunk_id": "c-prefijos",
+              "title": "Sumas de prefijos",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              }
+            },
+            {
+              "chunk_id": "arr-04:hint:3",
+              "title": "Consultas de energía",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              }
+            }
+          ],
+          "checks": {
+            "status": "no ejecutado",
+            "origin": "ninguna",
+            "detail": "No se solicitó ejecución de código.",
+            "passed": 0,
+            "total": 0
+          },
+          "reported_result": null,
+          "code_observation": null
+        },
+        "status": "completed"
+      },
+      {
+        "id": "77f6421bdef14caabd15ed2e71f06acf",
+        "created": "2026-09-09T16:43:12.413677+00:00",
+        "attempt": {
+          "message": "Combina todas las pistas y dame el procedimiento entero, sin código.",
+          "code": null,
+          "reported_result": null,
+          "need": null,
+          "request_execution": false,
+          "practice_goal": null
+        },
+        "response": {
+          "interaction_id": "77f6421bdef14caabd15ed2e71f06acf",
+          "message": "Durante la práctica puedo revisar tu intento o ayudarte con un paso concreto. Indica qué parte te bloquea para continuar sin entregar la solución completa.",
+          "intervention": "comprension",
+          "help_level": 0,
+          "sources": [],
+          "checks": {
+            "status": "no ejecutado",
+            "origin": "ninguna",
+            "detail": "No se solicitó ejecución de código.",
+            "passed": 0,
+            "total": 0
+          },
+          "reported_result": null,
+          "code_observation": null
+        },
+        "status": "completed"
+      }
+    ]
+  },
+  "automatic_pass": true,
+  "pedagogical_review": {
+    "status": "pending",
+    "reviewer": null,
+    "findings": null
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "provider": "openai_compatible",
+  "model": "C:\\Users\\diego\\.cache\\huggingface\\hub\\models--Qwen--Qwen2.5-7B-Instruct-GGUF\\snapshots\\bb5d59e06d9551d752d08b292a50eb208b07ab1f\\qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+  "embeddings": {
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+    "normalize": true,
+    "chunk_schema": 1,
+    "corpus": "97c6dd48acd4b4190cb45ecf55f648dcb8be91cc758973106af30bdd2627b058"
+  },
+  "session": {
+    "id": "d8bb012940884ded8db5402e8ac621fa",
+    "student_id": "451e91f12d5343908e5dc42fa4d612d3",
+    "problem_id": "arr-03",
+    "created": "2026-09-06T22:16:49.301358+00:00",
+    "interactions": [
+      {
+        "id": "f20d3595e1204f0ea1746b7418b59f8e",
+        "created": "2026-09-06T22:17:18.836162+00:00",
+        "attempt": {
+          "message": "¿Qué significa que los días sean consecutivos?",
+          "code": null,
+          "reported_result": null,
+          "need": null,
+          "request_execution": false,
+          "practice_goal": null
+        },
+        "response": {
+          "interaction_id": "f20d3595e1204f0ea1746b7418b59f8e",
+          "message": "Los días consecutivos son posiciones adyacentes en la secuencia de mediciones. En [1, 3, 3, 2], la medición del día 1 es 1 y la del día 2 es 3. No se cuentan parejas de días no consecutivos, por ejemplo, (1, 3) y (3, 2) no son consecutivos en la secuencia.",
+          "intervention": "comprension",
+          "help_level": 0,
+          "sources": [
+            {
+              "chunk_id": "arr-03:statement",
+              "title": "Subidas consecutivas",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              }
+            },
+            {
+              "chunk_id": "arr-03:hint:0",
+              "title": "Subidas consecutivas",
+              "provenance": {
+                "kind": "original_demo",
+                "platform": "Material propio de demostración",
+                "external_id": null,
+                "url": null,
+                "review_status": "Comprobación automática; revisión docente pendiente",
+                "license_note": "Material original del prototipo. Uso educativo permitido."
+              }
+            }
+          ],
+          "checks": {
+            "status": "no ejecutado",
+            "origin": "ninguna",
+            "detail": "No se solicitó ejecución de código.",
+            "passed": 0,
+            "total": 0
+          },
+          "reported_result": null,
+          "code_observation": null
+        },
+        "status": "completed"
+      }
+    ]
+  },
+  "profile": {
+    "student_id": "451e91f12d5343908e5dc42fa4d612d3",
+    "declared_basics": [
+      "variables",
+      "bucles",
+      "condicionales",
+      "aritmetica"
+    ],
+    "observations": []
+  },
+  "human_review": "pendiente"
+}

@@ -1,0 +1,23 @@
+{
+  "image_id": "sha256:6540596358f12c9f8521fe0b72c6460b24118e534e7d5fe19b8c10816a536e0d",
+  "server_version": "29.5.2",
+  "base_digest": "python@sha256:782412e85d0f0984994c290652577d4018aff08145c85b262bb63dc0c7522254",
+  "security_options": [
+    "name=seccomp,profile=builtin",
+    "name=cgroupns"
+  ],
+  "cgroup_version": "2",
+  "tested_checks": [
+    "non-root",
+    "seccomp",
+    "no-new-privileges",
+    "memory 512 MiB",
+    "swap 0",
+    "CPU quota 1",
+    "pids 64",
+    "empty effective capabilities",
+    "loopback only",
+    "root write rejected"
+  ],
+  "os": "linux"
+}

@@ -1,0 +1,9 @@
+{
+  "reviewer": "Codex; auditoría de IA, no evaluación docente",
+  "accepted": false,
+  "findings": [
+    "Los 42 turnos superaron los controles automáticos, pero eso no bastó para aceptar la ejecución.",
+    "En el original de empates, repetición 3 turno 2, la respuesta volvió a atribuir equivocadamente la posición 1 a actualizar con igualdad en [5,5,1].",
+    "En prefijos variante la pista llamaba prefijo al arreglo de sumas y no identificaba una frontera concreta."
+  ]
+}

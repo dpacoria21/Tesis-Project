@@ -1,0 +1,8 @@
+{
+  "reviewer": "Codex; auditoría de IA, no evaluación docente",
+  "accepted": false,
+  "findings": [
+    "El original de empates atribuyó equivocadamente la posición 1 a actualizar con igualdad en [5,5,1], aunque los controles lo aceptaron.",
+    "Las dos variantes de prefijos tuvieron rechazos por revelar la fórmula general durante la definición y la ayuda posterior."
+  ]
+}
