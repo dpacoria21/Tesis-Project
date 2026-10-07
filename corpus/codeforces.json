@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "problems": [
+    {
+      "id": "cf-4A",
+      "title": "Watermelon",
+      "statement": "Adaptación breve en español de Codeforces 4A. Una sandía pesa w kilogramos. Decide si se puede repartir en exactamente dos porciones de peso entero, positivo y par. Las porciones pueden tener pesos diferentes. Solo debes indicar si existe un reparto válido; no debes imprimir los pesos.",
+      "constraints": "1 <= w <= 100; w es entero.",
+      "input_format": "Una línea con el entero w, el peso total de la sandía.",
+      "output_format": "Imprime YES si existe el reparto solicitado; en caso contrario, imprime NO.",
+      "examples": [
+        {"input": "8\n", "output": "YES\n"}
+      ],
+      "topics": ["aritmetica", "paridad", "condicionales"],
+      "prerequisites": ["variables", "condicionales", "aritmetica"],
+      "difficulty": 1,
+      "difficulty_scale": "codeforces_intro_local_1_5",
+      "language": "es",
+      "programming_language": "C++17",
+      "provenance": {
+        "kind": "external",
+        "platform": "Codeforces",
+        "external_id": "4A",
+        "url": "https://codeforces.com/problemset/problem/4/A",
+        "review_status": "Enunciado contrastado con fuente oficial el 2026-10-07; adaptación y orientación propias; revisión docente pendiente",
+        "license_note": "Problema original de Codeforces. Se conserva el enlace y una paráfrasis breve en español; el texto original no se redistribuye íntegramente. Orientación y referencia C++17 redactadas para este prototipo, sin copiar editoriales. No se declara una licencia abierta del material original."
+      },
+      "explanation": "La suma de dos enteros pares positivos es par y como mínimo vale 4. Si w es par y al menos 4, las partes 2 y w-2 son pares positivas y suman w. Esto demuestra ambas direcciones del criterio. Para w=2, usar 0 y 2 violaría el peso positivo.",
+      "reference_strategy": "Leer w y comprobar que sea par y mayor que 2. Emitir YES o NO. Tiempo O(1), memoria adicional O(1). Referencia interna: no entregar como pista al estudiante.",
+      "reference_cpp": "#include <iostream>\nint main() {\n    int w;\n    if (!(std::cin >> w)) return 0;\n    std::cout << ((w > 2 && w % 2 == 0) ? \"YES\" : \"NO\") << '\\n';\n}\n",
+      "common_errors": [
+        "Aceptar w=2 por ser par sin exigir dos porciones positivas.",
+        "Exigir que ambas porciones pesen lo mismo, aunque el enunciado permite pesos distintos.",
+        "Imprimir los pesos o mensajes explicativos en lugar de YES o NO."
+      ],
+      "tests": [
+        {"input": "8\n", "output": "YES\n"},
+        {"input": "1\n", "output": "NO\n"},
+        {"input": "2\n", "output": "NO\n"},
+        {"input": "3\n", "output": "NO\n"},
+        {"input": "4\n", "output": "YES\n"},
+        {"input": "6\n", "output": "YES\n"},
+        {"input": "99\n", "output": "NO\n"},
+        {"input": "100\n", "output": "YES\n"}
+      ],
+      "guidance": [
+        {"level": 0, "text": "Son dos porciones y cada una debe tener peso entero, positivo y par. No tienen que ser iguales. Explica con tus palabras qué debe significar una respuesta YES.", "step": "cf-4A-requisitos"},
+        {"level": 1, "text": "Prueba repartos a mano para pesos totales pequeños. Anota cuáles cumplen todas las condiciones y observa qué ocurre al sumar dos pesos pares.", "step": "cf-4A-explorar-paridad"},
+        {"level": 2, "text": "Si dos cantidades son pares, puedes escribirlas como 2a y 2b. Su suma es 2(a+b). ¿Qué condición necesaria sobre el total deduces? Todavía debes revisar la positividad de ambas partes.", "step": "cf-4A-condicion-necesaria"},
+        {"level": 3, "text": "Revisa el menor peso par permitido por la entrada: ¿admite dos porciones pares positivas? Después intenta fijar una porción en el menor par positivo y justifica cuándo la otra seguiría siendo válida.", "step": "cf-4A-frontera-y-construccion"}
+      ],
+      "concept_ids": ["cf-concept-paridad"]
+    },
+    {
+      "id": "cf-71A",
+      "title": "Way Too Long Words",
+      "statement": "Adaptación breve en español de Codeforces 71A. Procesa una lista de palabras. Si una palabra tiene más de 10 letras, reemplázala por su primera letra, el número de letras interiores escrito en decimal sin ceros iniciales y su última letra, unidos sin espacios. Las palabras de hasta 10 letras se conservan. Mantén el orden de entrada.",
+      "constraints": "1 <= n <= 100; cada palabra contiene entre 1 y 100 letras latinas minúsculas (a-z).",
+      "input_format": "La primera línea contiene n. Cada una de las n líneas siguientes contiene una palabra sin espacios.",
+      "output_format": "Imprime n líneas: una palabra original o su abreviatura, según corresponda, por cada palabra de entrada.",
+      "examples": [
+        {"input": "4\nword\nlocalization\ninternationalization\npneumonoultramicroscopicsilicovolcanoconiosis\n", "output": "word\nl10n\ni18n\np43s\n"}
+      ],
+      "topics": ["cadenas", "condicionales", "bucles"],
+      "prerequisites": ["variables", "condicionales", "bucles", "cadenas"],
+      "difficulty": 1,
+      "difficulty_scale": "codeforces_intro_local_1_5",
+      "language": "es",
+      "programming_language": "C++17",
+      "provenance": {
+        "kind": "external",
+        "platform": "Codeforces",
+        "external_id": "71A",
+        "url": "https://codeforces.com/problemset/problem/71/A",
+        "review_status": "Enunciado contrastado con fuente oficial el 2026-10-07; adaptación y orientación propias; revisión docente pendiente",
+        "license_note": "Problema original de Codeforces. Se conserva el enlace y una paráfrasis breve en español; el texto original no se redistribuye íntegramente. Orientación y referencia C++17 redactadas para este prototipo, sin copiar editoriales. No se declara una licencia abierta del material original."
+      },
+      "explanation": "La regla distingue longitud mayor que 10 de longitud menor o igual que 10. En una palabra larga se conservan dos letras, por lo que se omiten longitud-2 letras interiores. Cada transformación es independiente; los resultados mantienen el orden. La cadena nunca está vacía según las restricciones.",
+      "reference_strategy": "Leer n y luego cada std::string. Para longitud mayor que 10 emitir front(), size()-2 y back(); en otro caso emitir la cadena. Terminar cada resultado con salto de línea. Tiempo O(suma de longitudes) por lectura y salida, memoria O(longitud máxima). Referencia interna: no entregar el programa como pista.",
+      "reference_cpp": "#include <iostream>\n#include <string>\nint main() {\n    int n;\n    if (!(std::cin >> n)) return 0;\n    for (int i = 0; i < n; ++i) {\n        std::string word;\n        std::cin >> word;\n        if (word.size() > 10) {\n            std::cout << word.front() << word.size() - 2 << word.back();\n        } else {\n            std::cout << word;\n        }\n        std::cout << '\\n';\n    }\n}\n",
+      "common_errors": [
+        "Abreviar palabras de exactamente 10 letras usando >= en lugar de >.",
+        "Contar también los extremos al calcular cuántas letras se omiten.",
+        "Acceder a word[word.size()] en lugar del último índice válido.",
+        "Sumar caracteres y números como una expresión aritmética en lugar de escribir sus representaciones consecutivamente.",
+        "Procesar una sola palabra o unir todas las respuestas en una línea."
+      ],
+      "tests": [
+        {"input": "4\nword\nlocalization\ninternationalization\npneumonoultramicroscopicsilicovolcanoconiosis\n", "output": "word\nl10n\ni18n\np43s\n"},
+        {"input": "1\na\n", "output": "a\n"},
+        {"input": "3\nabcdefghi\nabcdefghij\nabcdefghijk\n", "output": "abcdefghi\nabcdefghij\na9k\n"},
+        {"input": "2\nabcdefghijkl\nz\n", "output": "a10l\nz\n"},
+        {"input": "1\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n", "output": "a98a\n"}
+      ],
+      "guidance": [
+        {"level": 0, "text": "Cada entrada es una palabra y produce una línea. Solo cambian las que superan 10 letras; las demás se copian. Describe qué elementos aparecen en la abreviatura sin escribir código todavía.", "step": "cf-71A-comprender-regla"},
+        {"level": 1, "text": "Compara palabras de 9, 10 y 11 letras. Decide cuáles cambian y marca, en la que cambia, qué letras permanecerán visibles. Esto ayuda a precisar el límite de la condición.", "step": "cf-71A-frontera-longitud"},
+        {"level": 2, "text": "En una cadena con L caracteres, los índices válidos van de 0 a L-1. Marca ambos extremos y cuenta por separado las posiciones interiores; ese conteo es distinto de la longitud total.", "step": "cf-71A-extremos-interior"},
+        {"level": 3, "text": "Separa tu procedimiento en lectura, decisión y escritura para una sola palabra; después repítelo n veces. Al escribir una abreviatura, verifica que concatenas representaciones y no sumas los códigos de los caracteres. Prueba el caso de exactamente 10 letras.", "step": "cf-71A-organizar-procesamiento"}
+      ],
+      "concept_ids": ["cf-concept-cadenas"]
+    }
+  ],
+  "concepts": [
+    {
+      "id": "cf-concept-paridad",
+      "title": "Paridad y condiciones necesarias",
+      "text": "Un entero par puede expresarse como 2k. Sumar dos pares conserva esa forma. Una condición necesaria descarta casos imposibles, pero no demuestra por sí sola que un caso sea posible: para demostrarlo se puede construir un ejemplo que cumpla todas las restricciones. Revisa por separado positividad, integridad y otros límites del enunciado.",
+      "topics": ["aritmetica", "paridad", "condicionales"],
+      "language": "es",
+      "min_level": 2,
+      "provenance": {
+        "kind": "original_demo",
+        "platform": "Material pedagógico propio del prototipo",
+        "external_id": null,
+        "url": null,
+        "review_status": "Redacción propia para la adaptación de Codeforces; revisión docente pendiente",
+        "license_note": "Concepto original del prototipo; no es un editorial ni contenido extraído de Codeforces."
+      }
+    },
+    {
+      "id": "cf-concept-cadenas",
+      "title": "Longitud, índices y salida de cadenas",
+      "text": "Una std::string no vacía de longitud L tiene posiciones válidas desde 0 hasta L-1. size() da la longitud; front() y back() permiten consultar sus extremos. Distingue los caracteres de su representación al imprimir: sumar valores char puede producir un número. Un procesamiento por palabra permite mantener el orden y comprobar que cada entrada genera su propia línea.",
+      "topics": ["cadenas", "bucles"],
+      "language": "es",
+      "min_level": 2,
+      "provenance": {
+        "kind": "original_demo",
+        "platform": "Material pedagógico propio del prototipo",
+        "external_id": null,
+        "url": null,
+        "review_status": "Redacción propia para la adaptación de Codeforces; revisión docente pendiente",
+        "license_note": "Concepto original del prototipo; no es un editorial ni contenido extraído de Codeforces."
+      }
+    }
+  ]
+}
